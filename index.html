@@ -101,7 +101,7 @@
 		input::-webkit-outer-spin-button,
 		input::-webkit-inner-spin-button {
 			-webkit-appearance: none;
-		margin: 0;
+			margin: 0;
 		}
 
 		/* Firefox */
@@ -109,6 +109,7 @@
 			-moz-appearance: textfield;
 			appearance: textfield;
 		}
+
 
 		/* Password Meter */
 		#password-input {
@@ -149,8 +150,8 @@
 			width: 100%;
         }
 
+		/* Dynamic sizing */
 		/* 6 column system - 3 sizes: sm md lg */
-		
 		@media (min-width: 0px){
 			.sm-l{float: left;}
 			.sm-r{float: right;}
@@ -163,6 +164,8 @@
 			.sm-6{width: 100.0%;}
 			.multi-column{-webkit-column-count: 1;-moz-column-count: 1;column-count: 1;}}
 			.sm-only{display: none;}
+			/* Line break for some screen sizes */ 
+			.toggle-br{display: none !important;}
 
 
 		@media (max-width: 1024px){
@@ -181,7 +184,11 @@
 			.md-4{width: 66.66%;}
 			.md-5{width: 83.33%;}
 			.md-6{width: 100.0%;}
-			.multi-column{-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;}}
+			/* Line break for some screen sizes */ 
+			.toggle-br{display: none !important;}
+			.multi-column{-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;}
+			.multi-column2{-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;}
+		}
 		
 		@media (min-width: 1500px){
 			.lg-l{float: left;}
@@ -193,21 +200,33 @@
 			.lg-4{width: 66.66%;}
 			.lg-5{width: 83.33%;}
 			.lg-6{width: 100.0%;}
+			/* Line break for some screen sizes */ 
+			.toggle-br {display: block !important;}
 			.multi-column{-webkit-column-count: 3;-moz-column-count: 3;column-count: 3;}
 			.multi-column2{-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;}}
+
+		@media (min-width: 2000px){
+			/* Line break for some screen sizes */ 
+			.toggle-br {display: none !important;}
+		}
 		
 		@media (min-width: 2560px){
 			.elg-l{float: left;}
 			.elg-r{float: right;}
 			.elg-n{float: none;}
 			.elg-1{width: 16.66%;}
+			.elg-1e{width: 21.5%;}
+			.elg-2e{width: 27.5%;}
 			.elg-2{width: 33.33%;}
 			.elg-3{width: 50.00%;}
 			.elg-4{width: 66.66%;}
 			.elg-5{width: 83.33%;}
 			.elg-6{width: 100.0%;}
+			/* Line break for some screen sizes */ 
+			.toggle-br{display: none !important;}
 			.multi-column{-webkit-column-count: 3;-moz-column-count: 3;column-count: 3;}
 			.multi-column2{-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;}}
+
 			
 	</style>
 
@@ -666,11 +685,11 @@
 		document.getElementById("eight").innerHTML = eight;
 		
 		// Random 
-		document.getElementById("badpass").innerHTML = `<span class="purple">Bad Password: </span><span id="badpasstxt" class="pass" onclick="CopyToClipboard('badpasstxt');return false;">${badPassword()}</span>`;
-		document.getElementById("dice").innerHTML = `<span class="purple">Dice Roll: </span><span id="dicetxt" class="pass" onclick="CopyToClipboard('dicetxt');return false;">${getRandomInt(1, 6)} 🎲</span>`;
-		document.getElementById("rockpaperscissors").innerHTML = `<span class="purple">RPS: </span><span id="rpstxt" class="pass" onclick="CopyToClipboard('rpstxt');return false;">${rockPaperScissors()}</span>`;
-		document.getElementById("playingcard").innerHTML = `<span class="purple">Card: </span><span id="cardtxt" class="pass" onclick="CopyToClipboard('cardtxt');return false;">${getRandomCard()}</span>`;
-		document.getElementById("coin").innerHTML = `<span class="purple">Coin Toss: </span><span id="cointxt" class="pass" onclick="CopyToClipboard('cointxt');return false;">${coinToss()} 🪙</span>`;
+		document.getElementById("badpass").innerHTML = `<span id="badpasstxt" class="pass" onclick="CopyToClipboard('badpasstxt');return false;">${badPassword()}</span>`;
+		document.getElementById("dice").innerHTML = `<span id="dicetxt" class="pass" onclick="CopyToClipboard('dicetxt');return false;">${getRandomInt(1, 6)} 🎲</span>`;
+		document.getElementById("rockpaperscissors").innerHTML = `<span id="rpstxt" class="pass" onclick="CopyToClipboard('rpstxt');return false;">${rockPaperScissors()}</span>`;
+		document.getElementById("playingcard").innerHTML = `<span id="cardtxt" class="pass" onclick="CopyToClipboard('cardtxt');return false;">${getRandomCard()}</span>`;
+		document.getElementById("coin").innerHTML = `<span id="cointxt" class="pass" onclick="CopyToClipboard('cointxt');return false;">${coinToss()} 🪙</span>`;
 
 		// Populate Custom Days Calc
 		document.getElementById("thirty").innerHTML = customDate(30);
@@ -685,12 +704,12 @@
 <body>
 	<div class= "elg-4 lg-4 md-5 sm-6">
 		<!-- intro -->
-		<div class="container elg-5 lg-6 lg-l sm-6 md-4">
+		<div class="container elg-5 lg-6 lg-l sm-6 md-5">
 			<div class="pad">
 				<br>
-				<span class="grey oneliner pass">// Introduction ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
+				<span class="grey oneliner pass">// Introduction ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
 				<span class="sm-off"><br></span>
-				<div class="container elg-3 lg-3 lg-l sm-6 md-4">	
+				<div class="container elg-3 lg-3 lg-l sm-6 md-5">	
 					<span class="blue"><em>function </em></span><a class="green" id="Refresh" href="#" onclick="generate();return false;">generate</a>(<span class="orange"><em>click</em></span>)
 					<span class="sm-off">
 						{<br>
@@ -716,7 +735,7 @@
 					<span class="yellow">&nbsp</span>
 				</div>
 
-				<div class="container elg-2 lg-2 lg-l sm-6 md-4">	
+				<div class="container elg-2 lg-2 lg-l sm-6 md-5">	
 					<span class="green">Password Meter</span><br>
 					<span><input type="text" id="password-input" class="black" name="password-input" placeholder="Test passwords here..."></span>
 					<div id="password-strength"><span></span></div>
@@ -731,10 +750,10 @@
 		<div id="credits">
 		
 		<!-- Passwords -->
-		<div class="container elg-5 lg-6 lg-l sm-6 md-4">
+		<div class="container elg-5 lg-6 lg-l sm-6 md-5">
 			<div class="pad">
 				<br>
-				<span class="grey oneliner"><a class="grey" id="Refresh" href="#" onclick="credits();return false;">/</a>/ Passwords <span id="copied" class="grey small ">(Click to copy) </span>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
+				<span class="grey oneliner"><a class="grey" id="Refresh" href="#" onclick="credits();return false;">/</a>/ Passwords <span id="copied" class="grey small ">(Click to copy) </span>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
 				<br>
 				<span class="green">12 Characters</span>
 				
@@ -758,7 +777,7 @@
 				
 				<br>
 				
-				<span class="green">Readable Passphrase</span>
+				<span><a class="green" id="xkcd-link" href="https://xkcd.com/936/" target="_blank">Readable Passphrase</a></span>
 				<div id="readable" class="multi-column"><br>
 				<!--Passwords appear here -->
 				</div>
@@ -775,14 +794,14 @@
 
 		
 		<!-- Numbers -->
-		<div class="container elg-5 lg-6 lg-l sm-6 md-4">
+		<div class="container elg-5 lg-6 lg-l sm-6 md-5">
 			<div class="pad">
 				<br>
-				<span class="grey oneliner pass">// PINs -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
+				<span class="grey oneliner pass">// PINs ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
 				<br>
 			</div>	
 		</div>
-		<div class="container lg-2 lg-l sm-6 md-4">
+		<div class="container elg-2e lg-2 lg-l sm-6 md-5">
 			<div class="pad">
 				<span class="green">4 Digits</span>
 				<div id="four" class="multi-column2">
@@ -793,7 +812,7 @@
 		
 		<br>
 		
-		<div class="container lg-2 lg-l sm-6 md-4">	
+		<div class="container elg-2e lg-2 lg-l sm-6 md-5">	
 			<div class="pad">
 				<span class="green">8 Digits</span>
 				<div id="eight" class="multi-column2">
@@ -804,16 +823,16 @@
 		
 		
 		<!-- Other -->	
-		<div class="container elg-5 lg-6 lg-l sm-6 md-4">
+		<div class="container elg-5 lg-6 lg-l sm-6 md-5">
 			<div class="pad">
 			<br>
-				<span class="grey oneliner pass">// Other ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
+				<span class="grey oneliner pass">// Other ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span><br>
 				<br>
 			</div>	
 		</div>
-		<div class="container elg-2 lg-2 lg-l sm-6 md-3">
+		<div class="container elg-2e lg-2 lg-l sm-6 md-5">
 			<div class="pad">
-				<span class="green">Password Expiry Dates </span><span class="grey small">(Type over number to change)</span><br>
+				<span class="green">Password Expiry Dates </span><br class=toggle-br><span class="grey small">(Type over number to change)</span><br>
 				<span>
 					<input type="number" class="num-input" value="30" name="days1" id="days1" maxlength="4" onchange="document.getElementById('thirty').innerHTML = customDate(this.value)">
 					<span id="thirty"><!-- Expiry date appears here --></span><br>
@@ -835,19 +854,19 @@
 		
 		<br>
 		
-		<div class="container elg-1 lg-1 lg-l sm-6 md-3">	
+		<div class="container elg-2e lg-2 lg-l sm-6 md-5">	
 			<div class="pad">
 			<span class="green">Random Stuff</span><br>
-				<span id="badpass"></span><br>
-				<span id="dice"></span><br>
-				<span id="rockpaperscissors"></span><br>
-				<span id="playingcard"></span><br>
-				<span id="coin"></span><br>
+				<span class="purple">Bad Password: </span><span id="badpass"></span><br>
+				<span class="purple">Dice Roll: </span><span id="dice"></span><br>
+				<span class="purple">RPS: </span><span id="rockpaperscissors"></span><br>
+				<span class="purple">Card: </span><span id="playingcard"></span><br>
+				<span class="purple">Coin Toss: </span><span id="coin"></span><br>
 				<br>
 			</div>
 		</div>
 		
-		<div class="container elg-2 lg-2 lg-l sm-6 md-3">
+		<div class="container elg-2e lg-2 lg-l sm-6 md-5">
 			<div class="pad">
 				<span class="green">Phonetic Alphabet</span><br>
 				<span class="bold grey">A</span>lpha
@@ -877,12 +896,12 @@
 				<span class="bold grey">Y</span>ankee
 				<span class="bold grey">Z</span>ulu
 				<br><br>
-				<input type="text" id="phonetic-input" class="elg-5 lg-5 lg-l sm-5 md-5 black" name="phonetic-input" placeholder="Convert to Phonetic...">
+				<input type="text" id="phonetic-input" class="elg-5 lg-3 lg-l sm-5 md-5 black" name="phonetic-input" placeholder="Convert to Phonetic...">
 				<br><br>
 			</div>
 		</div>
 
-		<div class="container elg-5 lg-6 lg-l sm-6 md-4">
+		<div class="container elg-5 lg-6 lg-l sm-6 md-6">
 			<div class="pad">
 				<span id="phonetic-display"></span><br><br>
 			</div>	
