@@ -12,7 +12,7 @@ Single HTML page with lots of useful password utilities.
 * Some random novelty information such as dice roll, coin toss and a bad password.
 
 # Screenshots
-![image](https://github.com/user-attachments/assets/f863adbf-131c-4a78-8c8e-b73cf05c5acf)
+![image](https://github.com/user-attachments/assets/6cbff6af-5c18-443b-8c7a-87ec81304d01)
 
 Secret Link (scrt.link) Generation
 
